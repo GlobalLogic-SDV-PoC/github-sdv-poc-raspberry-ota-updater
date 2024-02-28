@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install gcovr
+      - yum install -y -q cmake3 gcc make
+  build:
+    commands:
+      - echo "Run unit tests and generate reports."
+      - mkdir build
+      - cd build
+      - cmake3 ..
+      - make updater_coverage
+reports:
+  gtest_reports:
+    files:
+      - build/updater_coverage.xml
+    discard-paths: yes
+    file-format: COBERTURAXML
