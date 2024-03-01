@@ -10,7 +10,7 @@ FROM public.ecr.aws/docker/library/alpine:latest as runtime
 
 RUN apk add --no-cache libstdc++ docker-cli
 
-ADD ./resources/configs /var/configs
+ADD ./resources/configs /var/config
 
 COPY --from=base /var/work/build-folder/updater_app /usr/local/bin/
 
